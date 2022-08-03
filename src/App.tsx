@@ -1,6 +1,6 @@
 import React from 'react'
-import LocationBoxContainer from 'containers/LocationBoxContainer'
+import LocationBox from 'components/LocationBox'
 
-const App: React.FC = () => <LocationBoxContainer />
+const App: React.FC = () => <LocationBox />
 
 export default App

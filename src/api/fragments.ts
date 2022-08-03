@@ -4,6 +4,7 @@ export const LOCATION_FIELDS = gql`
   fragment LocationFields on Location {
     id
     name
+    photo
     description
     overallRating
   }

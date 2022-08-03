@@ -1,6 +1,6 @@
 import { ReviewShape } from 'components/Reviews'
 
-export interface Location {
+export interface Props {
   id: string
   name: string
   description: string

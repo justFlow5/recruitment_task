@@ -1,34 +1,26 @@
 import { useLazyQuery } from '@apollo/client'
 import { useEffect, useState } from 'react'
 import { GET_LOCATIONS_ID, ApiShape } from 'api'
-import { UseLocationsIdProps } from './types'
 
-const useLocationsId = (): UseLocationsIdProps => {
-  const [locationsId, setLocationsId] = useState<string[]>([])
+const useLocationsId = () => {
   const [lastLocationId, setLastLocationId] = useState<string>()
 
-  const [getLocationsId, { loading: getLocationsIdLoading }] = useLazyQuery<
-    ApiShape.GetLocationsIdData
-  >(GET_LOCATIONS_ID)
+  const [getLocationsId, { loading: getLocationsIdLoading }] =
+    useLazyQuery<ApiShape.GetLocationsIdData>(GET_LOCATIONS_ID)
 
   useEffect(() => {
-    getLocationsId().then(res => {
-      const { data } = res
-
+    getLocationsId().then(({ data }) => {
       if (data) {
-        const ids: string[] = data.locations.map(e => e).map((l): string => l.id)
-        setLocationsId(ids)
+        const ids = data?.locations?.map(location => location.id)
+
+        if (ids?.length > 0) {
+          setLastLocationId(ids.at(-1))
+        }
       }
     })
-  }) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [getLocationsId])
 
-  useEffect(() => {
-    if (locationsId.length > 0) {
-      setLastLocationId(locationsId[locationsId.length - 1])
-    }
-  }, [locationsId])
-
-  return { lastLocationId, getLocationsIdLoading }
+  return { lastLocationId, getLocationsIdLoading } as const
 }
 
 export default useLocationsId

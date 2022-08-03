@@ -1,13 +1,13 @@
-import { Location } from 'components/Location'
+import { LocationShape } from 'components/Location'
 
 export interface GetLocationsIdData {
-  locations: Pick<Location, 'id'>[]
+  locations: Pick<LocationShape, 'id'>[]
 }
 
 export interface GetLocationData {
-  location: Location
+  location: LocationShape
 }
 
 export interface GetLocationInput {
-  id: Location['id']
+  id: LocationShape['id']
 }

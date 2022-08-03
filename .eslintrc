@@ -9,7 +9,7 @@
   ],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
   "parserOptions": {
     "ecmaVersion": "latest"

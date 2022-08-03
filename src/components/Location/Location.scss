@@ -4,6 +4,10 @@
 .Location {
   padding: $padding;
 
+  figure {
+    margin: 0;
+  }
+
   &__title {
     font-size: 24px;
     color: $green;

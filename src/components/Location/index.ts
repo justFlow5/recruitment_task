@@ -1,5 +1,5 @@
 import Location from './Location'
-import { Location } from './types'
+import { Props } from './types'
 
 export { Location as default }
-export type { Location }
+export type { Props as LocationShape }

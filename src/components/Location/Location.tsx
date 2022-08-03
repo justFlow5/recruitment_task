@@ -1,20 +1,33 @@
-import React, { ReactNode } from 'react'
-import { Location } from './types'
+import React from 'react'
+import { Props } from './types'
 import Reviews from 'components/Reviews'
 import './Location.scss'
 
-const Location = (loc: Location): ReactNode => (
-  <div className='Location'>
-    <div className='Location__title'>
-      {loc.name} (Id: {loc.id}, rating: {loc.overallRating})
-    </div>
+const Location = ({ id, name, description, photo, overallRating, reviewsForLocation }: Props) => {
+  return (
+    <section className='Location'>
+      <figure>
+        <figcaption className='Location__title'>
+          {name} (Id: {id}, rating: {Number(overallRating).toFixed(2)})
+        </figcaption>
 
-    <img className='Location__photo' alt={loc.name} src={loc.photo} />
+        <img
+          className='Location__photo'
+          alt={name}
+          src={photo}
+        />
 
-    <div>{loc.description}</div>
+        <p>{description}</p>
+      </figure>
 
-    <div className='Location__reviews'>{Reviews(loc.reviewsForLocation, 3)}</div>
-  </div>
-)
+      <div className='Location__reviews'>
+        <Reviews
+          reviews={reviewsForLocation}
+          last={3}
+        />
+      </div>
+    </section>
+  )
+}
 
 export default Location

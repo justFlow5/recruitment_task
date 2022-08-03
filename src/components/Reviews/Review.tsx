@@ -1,18 +1,15 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { ReviewShape } from './types'
 import './Review.scss'
 
-const Review = (rev: ReviewShape): ReactNode => (
-  <div
-    key={rev.id}
-    className='Review'
-  >
-    <div className='Review__comment'>{rev.comment}</div>
+const Review = ({ id, comment, rating }: ReviewShape) => (
+  <article className='Review'>
+    <p className='Review__comment'>{comment}</p>
 
-    <div>
-      ({rev.id}, rating: {rev.rating})
-    </div>
-  </div>
+    <p>
+      ({id}, rating: {rating})
+    </p>
+  </article>
 )
 
 export default Review

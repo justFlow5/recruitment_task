@@ -8,11 +8,6 @@ import 'styles/index.scss'
 const apiClient = new ApolloClient({
   uri: API_URL,
   cache: new InMemoryCache(),
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache'
-    }
-  }
 })
 
 const AppContainer = (): ReactElement => (

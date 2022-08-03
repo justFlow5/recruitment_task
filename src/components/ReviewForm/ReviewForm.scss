@@ -8,7 +8,13 @@
     color: $yellow;
   }
 
+  &__error {
+    color: $red;
+  }
+
   label {
     padding: $padding;
+    display: inline-block;
+    width: 90px;
   }
 }

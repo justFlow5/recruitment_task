@@ -3,3 +3,8 @@ export interface ReviewShape {
   comment: string
   rating: number
 }
+
+export interface Props {
+  reviews: ReviewShape[]
+  last: number
+}
